@@ -23,7 +23,7 @@ public class NBDrawApp1 extends JFrame
     private class Pixel{
         int x,y,size;
         Color colour;
-        public Pixel(int x, int y, int size){
+        public Pixel(int x, int y, int size, Color colour){
             this.x = x;
             this.y = y;
             this.size = size;
@@ -74,7 +74,6 @@ public class NBDrawApp1 extends JFrame
     private JTextArea messageArea;
     private JMenuBar menuBar;
     
-    private Color[] freehandColour = new Color[MAX_FREEHAND_PIXELS];
     private Color selectedColour;
     private int[][] fxy = new int[MAX_FREEHAND_PIXELS][3];//position and size of square 
     private int freehandPixelsCount = 0;
@@ -322,7 +321,7 @@ public class NBDrawApp1 extends JFrame
                 int y = event.getY();
                 int size = freehandSizeSlider.getValue(); // Get size from the slider
                 //adding new pixels to the arraylist
-                pixels.add(new Pixel(x - size/2, y - size/2, size));
+                pixels.add(new Pixel(x - size/2, y - size/2, size, selectedColour));
                 mouseMoved(event);
                 canvas.repaint();
             }
